@@ -18,7 +18,7 @@
                                     </li>
                             </ul>
                         </li>
-                        <li><a href="{{route("admin.login")}}">My account</a></li>
+                        <li><a href="{{route("admin.logout")}}">My account</a></li>
                         <li><a href="{{"/contact"}}">Contact</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="https://1.envato.market/DdLk5" target="_blank">Buy Porto!</a></li>

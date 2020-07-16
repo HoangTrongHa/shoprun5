@@ -4,10 +4,9 @@
         <div class="row">
             <div class="col-lg-8 padding-right-lg">
                 <div class="cart-table-container">
-                    <table class="table table-cart" data-url{{route("update")}}>
+                    <table class="table table-cart" id="update_cart_url" data-url{{route("update")}}>
                         <thead>
                         <tr>
-
                             <th class="product-col">Product</th>
                             <th class="price-col">Price</th>
                             <th class="qty-col">Qty</th>
@@ -23,8 +22,7 @@
                                 $total += $cartItem["price"] * $cartItem["qty"];
                             @endphp
                             <tr class="product-row">
-                              <td class="product-col">
-{{--                                <td>{{$cartItem["id"]}}</td>--}}
+                                <td class="product-col">
                                     <figure class="product-image-container">
                                         <a href="product.html" class="product-image">
                                             <img src="{{asset($cartItem["image"])}}" alt="product">
@@ -36,7 +34,8 @@
                                 </td>
                                 <td>{{$cartItem["price"]}}</td>
                                 <td>
-                                    <input class="vertical-quantity form-control" type="text" value="{{$cartItem["qty"]}}">
+                                    <input class="vertical-quantity form-control" id="qty"
+                                           type="number" value="{{$cartItem["qty"]}}">
                                 </td>
                                 <td>${{$cartItem["price"] * $cartItem["qty"]}}</td>
                             </tr>
@@ -46,7 +45,9 @@
                                         <a href="" title="Edit product" class="btn-edit"><span
                                                 class="sr-only">Edit</span><i class="icon-pencil"></i></a>
                                         <a href="" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
-                                        <a href="" data-id{{$id}} id="abcde">Update Shopping Cart</a>
+                                        <a class="btn btn-primary cartUpdate" data-id="{{$id}}">
+                                            Update Shopping Cart
+                                        </a>
                                     </div><!-- End .float-right -->
                                 </td>
                             </tr>
@@ -62,14 +63,12 @@
 
                                 <div class="float-right">
                                     <a href="" class="btn btn-outline-secondary btn-clear-cart">Clear Shopping Cart</a>
-                                    <a href="" data-id{{$id}} class="btn btn-outline-secondary update-cart">Update Shopping Cart</a>
                                 </div><!-- End .float-right -->
                             </td>
                         </tr>
                         </tfoot>
                     </table>
                 </div><!-- End .cart-table-container -->
-
                 <div class="cart-discount">
                     <h4>Apply Discount Code</h4>
                     <form action="#">
@@ -154,8 +153,8 @@
                         </tbody>
                         <tfoot>
                         @php
-                        $order = 0;
-                        $order = $total + 15
+                            $order = 0;
+                            $order = $total + 15
                         @endphp
                         <tr>
                             <td>Order Total</td>
@@ -172,12 +171,28 @@
             </div><!-- End .col-lg-4 -->
         </div><!-- End .row -->
     </div><!-- End .container -->
-    <script>
-       function cartUpdate() {
-           var _qty = $("#qty"+productId).val();
-       }
-       $(function () {
-$(document).on("click","#abcde",cartUpdate())
-       })
+    <script type="text/javascript">
+        $(".cartUpdate").click(function (event) {
+            event.preventDefault();
+            const urlUpdateCart = $("#update_cart_url").data("url");
+            const id = $(this).data("id");
+            const qty = $("tr").find("input#qty").val();
+            $.ajax({
+                type: "GET",
+                url: urlUpdateCart,
+                data: {id: id, qty: qty},
+                success: function (data) {
+                    if(data.code ===200){
+alert("thanhc")                    }
+                }, error: function () {
+
+                }
+            });
+        })
+        // function CartUpdate() {
+        // let urlUpdateCart =$("#update_cart_url").data("url");
+        // var id =$(this).data("id");
+        // alert(id);
+
     </script>
 @endsection

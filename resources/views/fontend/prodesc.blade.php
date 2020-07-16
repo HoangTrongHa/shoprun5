@@ -86,6 +86,7 @@
                                                data-url="{{route("addTocart",["id" => $product->id])}}">
                                                 <span>Add to Cart</span>
                                             </a>
+
                                             <a href="#" class="paction add-wishlist" title="Add to Wishlist">
                                                 <span>Add to Wishlist</span>
                                             </a>
@@ -315,6 +316,7 @@
     <script>
         // $('add-to-cart').on('click', myFunction());
         $('.add-cart').click(function (event) {
+            event.preventDefault();
             var urlCart = $(this).attr('data-url');
             alert(urlCart)
             $.ajax({

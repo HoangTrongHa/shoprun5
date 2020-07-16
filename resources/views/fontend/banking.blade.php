@@ -1,26 +1,20 @@
 @extends("fontend.layout")
 @section("content")
     <!-- Add Cart Modal -->
+    <main class="main">
         <div class="container">
-            <ul class="checkout-progress-bar">
-                <li class="active">
-                    <span>Shipping</span>
-                </li>
-                <li>
-                    <span>Review &amp; Payments</span>
-                </li>
-            </ul>
             <div class="row">
                 <div class="col-lg-8 padding-right-lg">
                     <ul class="checkout-steps">
                         <li>
                             <h2 class="step-title">Login to pay
                             </h2>
-                            <form action="#">
+                            <form action="{{route("login-customer")}}" method="POST">
+                                {{csrf_field()}}
                                 <div class="form-group required-field">
                                     <label>Email Address </label>
                                     <div class="form-control-tooltip">
-                                        <input type="email" class="form-control" required>
+                                        <input type="email" name="email_account" class="form-control" required>
                                         <span class="input-tooltip" data-toggle="tooltip"
                                               title="We'll send your order confirmation here." data-placement="right"><i
                                                 class="icon-question-circle"></i></span>
@@ -29,13 +23,12 @@
 
                                 <div class="form-group required-field">
                                     <label>Password </label>
-                                    <input type="password" class="form-control" required>
+                                    <input type="password" name="password_account" class="form-control" required>
                                 </div><!-- End .form-group -->
                                 <p>You already have an account with us. Sign in or continue as guest.</p>
                                 <div class="form-footer">
                                     <button type="submit" class="btn btn-primary">LOGIN</button>
                                     <a href="forgot-password.html" class="forget-pass"> Forgot your password?</a>
-                                    <a href="forgot-password.html" class="forget-pass"> Register</a>
                                 </div><!-- End .form-footer -->
                             </form>
                         </li>
@@ -86,5 +79,42 @@
                     </div><!-- End .order-summary -->
                 </div><!-- End .col-lg-4 -->
             </div><!-- End .row -->
-
+            <div class="row">
+                <div class="col-lg-8 padding-right-lg">
+                    <ul class="checkout-steps">
+                        <li>
+                            <h2 class="step-title">REGISTER
+                            </h2>
+                            <form action="{{route("add_customer")}}" method="POST">{{csrf_field()}}
+                                <div class="form-group required-field">
+                                    <label>Email Address </label>
+                                    <div class="form-control-tooltip">
+                                        <input type="email" name="email_account" class="form-control" required>
+                                        <span class="input-tooltip" data-toggle="tooltip"
+                                              title="We'll send your order confirmation here." data-placement="right"><i
+                                                class="icon-question-circle"></i></span>
+                                    </div><!-- End .form-control-tooltip -->
+                                </div><!-- End .form-group -->
+                                <div class="form-group required-field">
+                                    <label>Password </label>
+                                    <input type="password" name="password_account" class="form-control" required>
+                                </div><!-- End .form-group -->
+                                <div class="form-group required-field">
+                                    <label>NAME </label>
+                                    <input type="text" name="name_account" class="form-control" required>
+                                </div>
+                                <div class="form-group required-field">
+                                    <label>YOUR PHONE </label>
+                                    <input type="text" name="phone_account" class="form-control" required>
+                                </div>
+                                <div class="form-footer">
+                                    <button type="submit" class="btn btn-primary">REGISTER</button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div><!-- End .col-lg-8 -->
+            </div><!-- End .row -->
+        </div>
+    </main>
 @endsection

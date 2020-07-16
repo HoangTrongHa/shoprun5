@@ -16,12 +16,23 @@ Route::get("/", "user\UserController@index");
 Route::get("/contact", "user\UserController@contact");
 Route::get("/details/{id}", "user\UserController@details");
 Route::get("/prodesc/{id}", "user\UserController@desc")->name("desc");
+//Route::get("/Save-item-cart/{id}/{qty}", "user\UserController@SaveCart")->name("SaveCart");
 
 
 Route::get("product/addtocart/{id}", "user\UserController@addTocart")->name("addTocart");
 Route::get("product/showcart", "user\UserController@showCart")->name("show");
-Route::get("product/updatecart", "user\UserController@showCart")->name("update");
+Route::get("product/updatecart", "user\UserController@updateCart")->name("update");
 Route::get("product/banking", "user\UserController@banking")->name("banking");
+Route::post("product/save-cart", "user\UserController@savecart")->name("savecart");
+Route::post("product/save-customer", "user\UserController@savecustomer")->name("saveshipping");
+
+
+Route::post("/add_customer", "user\UserController@addcustomer")->name("add_customer");
+Route::post("/login-customer", "user\UserController@logincustomer")->name("login-customer");
+Route::get("/showcheck", "user\UserController@showcheck")->name("showcheck");
+
+
+
 
 
 Route::get("admin/login","Admin\UserController@getLoginAdmin")->name("admin.login");

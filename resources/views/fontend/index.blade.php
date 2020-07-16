@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-sm-6 offset-sm-6 col-lg-5 offset-lg-7">
                                 <h3>Shoes</h3>
-                                <img src="assets/images/product-section-slider/img-1.png" alt="img">
+                                <img src="{{asset("assets/images/product-section-slider/img-1.png")}}" alt="img">
                                 <a href="{{url("/details/6")}}" class="btn btn-white">Shop Now</a>
                             </div>
                         </div><!-- End .row -->
@@ -39,7 +39,7 @@
             <div class="product-slider-section">
                 <div class="product-section-slider owl-carousel owl-carousel-lazy owl-theme owl-theme-light">
                     <div class="product-section-slide">
-                        <div class="slide-bg owl-lazy" data-src="images/nenwomen.jpg"></div><!-- End .slide-bg -->
+                        <div class="slide-bg owl-lazy" data-src="{{asset("images/nenwomen.jpg")}}"></div><!-- End .slide-bg -->
                         <div class="container-fluid product-slide-content">
                             <div class="row">
                                 <div class="col-sm-6 offset-sm-6 col-lg-5 offset-lg-7">
@@ -56,7 +56,7 @@
             <div class="product-slider-section">
                 <div class="product-section-slider owl-carousel owl-carousel-lazy owl-theme owl-theme-light">
                     <div class="product-section-slide">
-                        <div class="slide-bg owl-lazy" data-src="images/nenmen.jpg"></div><!-- End .slide-bg -->
+                        <div class="slide-bg owl-lazy" data-src="{{asset("images/nenmen.jpg")}}"></div><!-- End .slide-bg -->
                         <div class="container-fluid product-slide-content">
                             <div class="row">
                                 <div class="col-sm-6">
